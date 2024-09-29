@@ -77,16 +77,15 @@ function Index() {
       imgSrc: Sun,
     },
   };
-  let leadingDigit = 0;
   const currentWeatherData = weatherMapping[todayWeather] || {};
+  let leadingDigit = 0;
 
+  const percentage = Math.min((totalWater / neededWater) * 100, 100);
 
-  const percentage = (totalWater / neededWater) * 100;
-  let leadingDigit = Math.floor(percentage).toString();
-
-  // 0부터 10까지의 값을 처리
-  if (parseInt(leadingDigit) > 10) {
-    leadingDigit = "10"; // 10 이상은 10으로 처리
+  if (percentage === 100) {
+    leadingDigit = 10;
+  } else {
+    leadingDigit = Math.floor(percentage).toString()[0];
   }
 
   const imageUrl = `https://quddaztestbucket.s3.ap-northeast-2.amazonaws.com/${leadingDigit}.png`;
