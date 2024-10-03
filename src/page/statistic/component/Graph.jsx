@@ -55,22 +55,14 @@ const Graph = ({ title, comment }) => {
       </div>
       <div className="stc-main-show-graph-container">
         <div className="stc-main-show-graph-ml-container">
-          <div className="stc-main-show-graph-ml">
-            <div className="stc-ml">2L</div>
-            <div className="stc-grahp-line"></div>
-          </div>
-          <div className="stc-main-show-graph-ml">
-            <div className="stc-ml">1,500</div>
-            <div className="stc-grahp-line"></div>
-          </div>
-          <div className="stc-main-show-graph-ml">
-            <div className="stc-ml">1000</div>
-            <div className="stc-grahp-line"></div>
-          </div>
-          <div className="stc-main-show-graph-ml">
-            <div className="stc-ml">500</div>
-            <div className="stc-grahp-line"></div>
-          </div>
+          {["2L", "1500", "1000", "500"].map((ml, index) => (
+            <div className="stc-main-show-graph-ml">
+              <div key={index} className="stc-ml">
+                {ml}
+              </div>
+              <div className="stc-grahp-line"></div>
+            </div>
+          ))}
         </div>
       </div>
       {location.pathname === "/statistic" ? (
@@ -94,7 +86,7 @@ const Graph = ({ title, comment }) => {
         </div>
       ) : (
         <div className="stc-main-show-graphs">
-          <div className="stc-main-show-graph-time">
+          {/* <div className="stc-main-show-graph-time">
             <div className="vertical"></div>월
           </div>
           <div className="stc-main-show-graph-time">
@@ -114,7 +106,12 @@ const Graph = ({ title, comment }) => {
           </div>
           <div className="stc-main-show-graph-time">
             <div className="vertical"></div>일
-          </div>
+          </div> */}
+          {["월", "화", "수", "목", "금", "토", "일"].map((day, index) => (
+            <div key={index} className="stc-main-show-graph-time">
+              {day}
+            </div>
+          ))}
         </div>
       )}
     </div>
