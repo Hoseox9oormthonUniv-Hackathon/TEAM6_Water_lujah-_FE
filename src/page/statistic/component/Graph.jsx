@@ -32,7 +32,7 @@ const Graph = ({ title, comment }) => {
   // totalWater 계산 (useEffect 이후 계산)
   const totalWater =
     waterResult + teaResult + spaResult + juiceResult + milkResult;
-
+  const cafe = "주간 카페인 섭취량☕️";
   return (
     <div className="stc-main-water">
       {/* 현재 경로가 /statistic인지 확인 */}
@@ -67,48 +67,22 @@ const Graph = ({ title, comment }) => {
       </div>
       {location.pathname === "/statistic" ? (
         <div className="stc-main-show-graph">
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>
-            8시
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="verticall"></div>
-            12시
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="verticall"></div>
-            16시
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>
-            20시
-          </div>
+          {["8시", "12시", "16시", "20시"].map((time, index) => (
+            <div key={index} className="stc-main-show-graph-time">
+              <div className="vertical"></div>
+              {time}
+            </div>
+          ))}
         </div>
       ) : (
         <div className="stc-main-show-graphs">
-          {/* <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>월
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="verticall"></div>화
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="verticall"></div>수
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>묵
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>금
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>토
-          </div>
-          <div className="stc-main-show-graph-time">
-            <div className="vertical"></div>일
-          </div> */}
           {["월", "화", "수", "목", "금", "토", "일"].map((day, index) => (
             <div key={index} className="stc-main-show-graph-time">
+              {title === cafe ? (
+                <div className="cvertical"></div>
+              ) : (
+                <div className="vertical"></div>
+              )}
               {day}
             </div>
           ))}
